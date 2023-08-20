@@ -2,7 +2,7 @@
 
 
 
-![data_science_topics](https://s3.ap-south-1.amazonaws.com/myinterviewtrainer-domestic/public_assets/assets/000/000/748/original/Data_Science_Life_Cycle.jpg?1627480982)
+![data_science_topics](https://s3.ap-south-1.amazonaws.com/myinterviewtrainer-domestic/public_assets/assets/000/000/732/original/data_science_OG_Image_%281%29.png?1627455173)
 
 # Interview Questions - Data Scientist Positions ( Entry, Mid & Senior)
 

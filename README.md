@@ -1134,7 +1134,7 @@ Activation functions are used in the neurons of a convolutional neural network (
     
 3.  **Tanh (Hyperbolic Tangent):** This function maps any input value to a value between -1 and 1. It's similar to the sigmoid function but outputs values in a wider range. 
     
-4.  **Leaky ReLU:** This function is similar to ReLU, but instead of mapping negative input values to 0, it maps them to a small positive value (e.g. 0.01). This helps to avoid the "dying ReLU" problem, where a neuron can become "dead" and output zero for all input values.
+4.  **Leaky ReLU:** This function is similar to ReLU, but instead of mapping negative input values to 0, it maps them to a small negative value (e.g. 0.01). This helps to avoid the "dying ReLU" problem, where a neuron can become "dead" and output zero for all input values.
     
 5.  **ELU (Exponential Linear Unit):** This function is similar to Leaky ReLU, but the negative part of the function has a slope of alpha, where alpha is a hyperparameter. This helps to avoid the "dying ReLU" problem and also helps to speed up the convergence.
     

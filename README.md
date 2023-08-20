@@ -4,6 +4,8 @@
 
 ![data_science_topics](https://s3.ap-south-1.amazonaws.com/myinterviewtrainer-domestic/public_assets/assets/000/000/732/original/data_science_OG_Image_%281%29.png?1627455173)
 
+> **For More Important questions** - [Data Science Questions](https://www.interviewbit.com/data-science-interview-questions/)
+
 # Interview Questions - Data Scientist Positions ( Entry, Mid & Senior)
 
 > This repository contains the curated list of topic wise questions for Data Scientist Positions in various companies. <br />

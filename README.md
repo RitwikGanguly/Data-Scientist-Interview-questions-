@@ -1356,4 +1356,5 @@ RNNs and LSTMs indeed face several issues that make them less effective for long
    - **Parallel Processing**: Unlike RNNs and LSTMs, which process sequences **sequentially**, Transformers process all tokens in a sequence **in parallel**. This not only speeds up training and inference but also ensures that information from distant tokens isn't lost over time steps.
    
    - **Context Windows**: The attention mechanism in Transformers allows them to have a much larger **context window** compared to RNNs and LSTMs. Transformers can model dependencies between any tokens in a sequence, no matter how far apart they are, without needing to propagate information step-by-step through a hidden state.
+   - 
 📙 [Back to Top Section ](#interview-questions---data-scientist-positions--entry-mid--senior)

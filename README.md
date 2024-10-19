@@ -1328,4 +1328,32 @@ In a RoBERTa-based question answering system, confidence scores are calculated t
 -   **MLM score**: Another way to calculate the confidence score is by using the scores of the masked language modeling task. The MLM task is the task of predicting a token given its surrounding context, this score indicates how likely is that the predicted answer is a valid word in the language.
 ---
 
+8. **Difference between Tranformer models and RNN/LSTM**
+   
+`Ans:`
+RNNs and LSTMs indeed face several issues that make them less effective for long sequences compared to Transformer models. The primary challenges are **vanishing gradients** and **limited context windows**, which restrict their ability to capture long-range dependencies in sequences.
+
+- **Vanishing (and Exploding) Gradients in RNNs**:
+   - **Problem**: RNNs suffer from **vanishing gradients**, where the gradients of the loss function with respect to earlier layers (or time steps) become very small as they are propagated back through the network during training.
+   - **Why it happens**: In RNNs, the same weights are reused across every time step. The gradients are propagated back through time via **backpropagation through time (BPTT)**. As the network depth (or sequence length) increases, repeated multiplication of small gradients (due to activation functions like tanh or sigmoid) results in exponentially smaller values. This means that the gradients for earlier layers or time steps shrink, and the network cannot learn to adjust the weights effectively for those earlier steps.
+   - **Consequence**: As a result, RNNs struggle to retain information over long time steps because they cannot effectively learn dependencies between distant parts of the input sequence. In long sequences, the model focuses more on the recent tokens and "forgets" information from earlier tokens.
+
+   - **Exploding gradients**: On the other hand, if the gradients grow too large during backpropagation, it leads to **exploding gradients**, where the model's weights are updated too drastically, causing instability during training. This is less common than vanishing gradients but still problematic.
+
+- **LSTMs (Long Short-Term Memory)**: An Improvement, But Not a Complete Solution:
+   - **LSTMs** were specifically designed to address the vanishing gradient problem by introducing **gates** (input, forget, and output gates) and a **memory cell** to regulate the flow of information through the network.
+   - **How LSTMs help**: The forget gate in LSTMs allows the model to selectively "forget" or "remember" information at each time step, helping it retain important information over longer sequences and mitigating the vanishing gradient issue.
+   - **Still limited for very long sequences**: While LSTMs improve on the basic RNN by maintaining longer-term dependencies, they still have limitations when dealing with very long sequences. The memory in LSTMs can still degrade over time, meaning they struggle to capture dependencies that span very large numbers of time steps. They are not fully immune to the vanishing gradient problem, especially in very deep networks or very long sequences.
+
+- **Limited Context Window in RNNs and LSTMs**:
+   - **Sequential Processing**: RNNs and LSTMs process sequences **sequentially** — one time step at a time — and their hidden state is passed from one time step to the next. This makes it inherently difficult for them to capture relationships between widely spaced words or tokens in a sequence.
+   - **Information bottleneck**: In both RNNs and LSTMs, the hidden state (or memory cell in LSTMs) is the only mechanism for passing information from one time step to the next. As the sequence progresses, the model must pack all relevant information into this hidden state. As a result, information from earlier time steps gets diluted or lost over long sequences, especially if it's not immediately relevant to recent time steps.
+   - **Loss of long-range dependencies**: This sequential dependence creates a bottleneck for learning long-range dependencies, since the model can only attend to the hidden state, which is limited in capacity and decays over time. For long-range dependencies, this becomes a serious issue because the model is primarily focused on local context and has difficulty remembering information from distant time steps.
+
+- **Transformers: Addressing the Issues with Self-Attention**:
+   - **Self-Attention Mechanism**: Transformers, in contrast to RNNs and LSTMs, use a **self-attention mechanism** to capture relationships between all tokens in a sequence at once, regardless of their distance from each other. The self-attention mechanism allows each token to "attend" to every other token in the sequence. This means that Transformers don't have to rely on hidden states to pass information from one step to the next; instead, each word or token can access any other token directly, allowing the model to capture long-range dependencies more effectively.
+   
+   - **Parallel Processing**: Unlike RNNs and LSTMs, which process sequences **sequentially**, Transformers process all tokens in a sequence **in parallel**. This not only speeds up training and inference but also ensures that information from distant tokens isn't lost over time steps.
+   
+   - **Context Windows**: The attention mechanism in Transformers allows them to have a much larger **context window** compared to RNNs and LSTMs. Transformers can model dependencies between any tokens in a sequence, no matter how far apart they are, without needing to propagate information step-by-step through a hidden state.
 📙 [Back to Top Section ](#interview-questions---data-scientist-positions--entry-mid--senior)
